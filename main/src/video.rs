@@ -53,7 +53,7 @@ impl VideoStream {
         })
     }
 
-    /// 🔥 이제 그냥 "한 프레임"만 읽는다
+    /// 그냥 "한 프레임"만 읽는다
     pub fn read_frame(&mut self, buf: &mut Vec<u8>) -> bool {
         buf.resize(self.frame_size, 0);
         self.ffmpeg
