@@ -59,16 +59,10 @@ fn main() -> anyhow::Result<()> {
             }
 
             // 🔥 문자 비율 보정은 ASCII 단계에서만
-            rgb_to_colored_ascii(
-                &rgb_buf,
-                video.width,
-                video.height,
-                &mut ascii_lines,
-            );
+            rgb_to_colored_ascii(&rgb_buf, video.width, video.height, &mut ascii_lines);
 
             terminal.draw(|f| {
-                let p = Paragraph::new(Text::from(ascii_lines.clone()))
-                    .wrap(Wrap { trim: false });
+                let p = Paragraph::new(Text::from(ascii_lines.clone())).wrap(Wrap { trim: false });
                 f.render_widget(p, f.size());
             })?;
         }

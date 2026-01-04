@@ -1,11 +1,8 @@
-use ratatui::{
-    backend::CrosstermBackend,
-    Terminal,
-};
 use crossterm::{
-    terminal::{enable_raw_mode, disable_raw_mode},
     execute,
+    terminal::{disable_raw_mode, enable_raw_mode},
 };
+use ratatui::{Terminal, backend::CrosstermBackend};
 use std::io::stdout;
 
 pub type Tui = Terminal<CrosstermBackend<std::io::Stdout>>;

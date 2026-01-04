@@ -29,14 +29,13 @@ impl VideoStream {
         // 🔥 핵심: fps=30 강제
         let ffmpeg = Command::new("../tools/ffmpeg/ffmpeg.exe")
             .args([
-                "-i", "pipe:0",
+                "-i",
+                "pipe:0",
                 "-an",
                 "-vf",
-                &format!(
-                    "scale={}:{},fps=30,format=rgb24",
-                    width, real_height
-                ),
-                "-f", "rawvideo",
+                &format!("scale={}:{},fps=30,format=rgb24", width, real_height),
+                "-f",
+                "rawvideo",
                 "pipe:1",
             ])
             .stdin(Stdio::from(ytdlp_stdout))
@@ -56,11 +55,6 @@ impl VideoStream {
     /// 그냥 "한 프레임"만 읽는다
     pub fn read_frame(&mut self, buf: &mut Vec<u8>) -> bool {
         buf.resize(self.frame_size, 0);
-        self.ffmpeg
-            .stdout
-            .as_mut()
-            .unwrap()
-            .read_exact(buf)
-            .is_ok()
+        self.ffmpeg.stdout.as_mut().unwrap().read_exact(buf).is_ok()
     }
 }
