@@ -1,8 +1,7 @@
 [package]
-name = "main"
+name = "tui_video"
 version = "0.1.0"
 edition = "2024"
-rust-version = "1.92.0"
 
 [dependencies]
 anyhow = "1.0.100"
